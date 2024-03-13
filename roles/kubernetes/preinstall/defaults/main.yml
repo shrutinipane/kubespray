@@ -8,7 +8,6 @@ dns_late: false
 
 common_required_pkgs:
   - "{{ (ansible_distribution == 'openSUSE Tumbleweed') | ternary('openssl-1_1', 'openssl') }}"
-  - curl
   - rsync
   - socat
   - unzip
