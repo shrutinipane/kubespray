@@ -54,6 +54,10 @@
         - download_force_cache
         - not download_run_once
 
+    - name: Docker login
+      command: docker login -u="{{ docker_username }}" -p="{{ docker_password }}" docker.io
+      when: container_manager == "docker"
+
     - name: Download_container | Download image if required
       command: "{{ image_pull_command_on_localhost if download_localhost else image_pull_command }} {{ image_reponame }}"
       delegate_to: "{{ download_delegate if download_run_once else inventory_hostname }}"
